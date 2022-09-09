@@ -1,6 +1,6 @@
 import TaskCard from "./TaskCard";
 
-const TaskList = ({ data }) => {
+const TaskList = ({ data, updateArray }) => {
   if (data.length === 0) {
     return <h1>List Pending</h1>;
   }
@@ -8,7 +8,7 @@ const TaskList = ({ data }) => {
   return (
     <div>
       {data.map((task) => (
-        <TaskCard key={task.id} task={task} />
+        <TaskCard key={task.id} task={task} deleteItem={()=>updateArray(task.id)}/>
       ))}
     </div>
   );

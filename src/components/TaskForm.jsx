@@ -25,6 +25,7 @@ const TaskForm = ({ data, updateArray }) => {
         placeholder="Type your homework"
         onChange={(e) => setTitle(e.target.value)}
         value={title}
+        autoFocus
       />
       <textarea
         cols="15"

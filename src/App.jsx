@@ -10,6 +10,11 @@ function App() {
     setarrayTasks(newArray);
   };
 
+  const deleteItem = (i) =>{
+    const arrayAfterDelete = tasks.filter((item)=>item.id !== i)
+    setarrayTasks(arrayAfterDelete)
+  }
+
   useEffect(() => {
     setarrayTasks(data);
   }, []);
@@ -18,7 +23,7 @@ function App() {
     <>
       <h1>My Homework Task</h1>
       <TaskForm data={tasks} updateArray={updateTasksArray}/>
-      <TaskList data={tasks} />
+      <TaskList data={tasks} updateArray={deleteItem} />
     </>
   );
 }
