@@ -1,17 +1,21 @@
 import { useState } from "react";
 
-const TaskForm = ({data, updateArray}) => {
+const TaskForm = ({ data, updateArray }) => {
   const [title, setTitle] = useState("");
+  const [describ, setDescrib] = useState("");
 
-const handleSubmit = (e) =>{
+  const handleSubmit = (e) => {
     e.preventDefault();
 
-    updateArray([...data,{
+    updateArray([
+      ...data,
+      {
         id: data.length,
         title: title,
-        description: `My ${data.length} homework`,
-    }]);
-}
+        description: describ,
+      },
+    ]);
+  };
 
   return (
     <form onSubmit={handleSubmit}>
@@ -19,6 +23,12 @@ const handleSubmit = (e) =>{
         placeholder="Type your homework"
         onChange={(e) => setTitle(e.target.value)}
       />
+      <textarea
+        cols="15"
+        rows="5"
+        placeholder="Enter the description"
+        onChange={(e) => setDescrib(e.target.value)}
+      ></textarea>
       <button>Save</button>
     </form>
   );
