@@ -1,20 +1,17 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
+import {ApiContext} from "../context/ApiContext";
 
-const TaskForm = ({ data, updateArray }) => {
+const TaskForm = () => {
   const [title, setTitle] = useState("");
   const [describ, setDescrib] = useState("");
+  const { createTask } = useContext(ApiContext);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
-    updateArray([
-      ...data,
-      {
-        id: data.length,
-        title: title,
-        description: describ,
-      },
-    ]);
+    createTask({
+      title,
+      describ,
+    });
     setTitle('');
     setDescrib('');
   };
